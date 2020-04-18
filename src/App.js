@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Cards, Chart, CountryPicker} from './components';
-import {Typography, Box} from '@material-ui/core';
+import {Typography, Box, Link} from '@material-ui/core';
 import styles from './App.module.css';
 import {fetchData} from './api';
 import {fetchDailyData} from './api';
@@ -31,6 +31,8 @@ class App extends React.Component {
                 <Chart data={data} country={country} />
                 <Box p={5}>
                     <Typography color="textSecondary" variant="body2" align="center">&copy; Developed and Maintained by Ritwik Math</Typography>
+                    <Typography color="textSecondary" variant="body2" align="center">
+                        <Link href="https://github.com/ritwikmathlearner/covid19tracker/" onClick={preventDefault}>Github Repo</Link></Typography>
                 </Box>
             </div>
         )
