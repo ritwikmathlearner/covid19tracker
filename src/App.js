@@ -32,7 +32,7 @@ class App extends React.Component {
                 <Box p={5}>
                     <Typography color="textSecondary" variant="body2" align="center">&copy; Developed and Maintained by Ritwik Math</Typography>
                     <Typography color="textSecondary" variant="body2" align="center">
-                        <Link href="https://github.com/ritwikmathlearner/covid19tracker/" onClick={preventDefault}>Github Repo</Link></Typography>
+                        <Link href="https://github.com/ritwikmathlearner/covid19tracker/" target="_blank">Github Repo</Link></Typography>
                 </Box>
             </div>
         )
