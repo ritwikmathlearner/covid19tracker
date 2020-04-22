@@ -14,8 +14,7 @@ export const fetchData = async (country) =>{
         const { data: {confirmed, recovered, deaths, lastUpdate} } = await axios.get(changeableURL);
         let pastDay = localStorage.getItem(`covid_status_past_day`) ? localStorage.getItem(`covid_status_past_day`) : null;
         let countryStatus = localStorage.getItem(`covid_status_${country}_confirmed_past_day`) ? localStorage.getItem(`covid_status_${country}_confirmed_past_day`) : null;
-        let differanceInDay = pastDay ? (((new Date(pastDay)).getTime()) - ((new Date(lastUpdate)).getTime())) / (1000 * 3600 * 24) : 0;
-        if(pastDay == null || countryStatus == null) {
+        if(pastDay == null) {
             if(country){
                 localStorage.setItem(`covid_status_${country}_confirmed_past_day`, confirmed.value);
                 localStorage.setItem(`covid_status_${country}_recovered_past_day`, recovered.value);
@@ -33,7 +32,7 @@ export const fetchData = async (country) =>{
             }
             localStorage.setItem(`covid_status_past_day`, lastUpdate);
             localStorage.setItem(`covid_status_before_past_day`, lastUpdate);
-        } else if((new Date(pastDay).toString()) !== (new Date(lastUpdate).toString())){
+        } else if((new Date(pastDay).toDateString() !== new Date(lastUpdate).toDateString())){
             if(country){
                 if(countryStatus == null){
                     localStorage.setItem(`covid_status_${country}_confirmed_past_day`, confirmed.value);
@@ -68,6 +67,7 @@ export const fetchData = async (country) =>{
             localStorage.setItem(`covid_status_before_past_day`, pastDay);
             localStorage.setItem(`covid_status_past_day`, lastUpdate);
         }
+        // console.log((new Date(pastDay).toDateString() !== new Date(lastUpdate).toDateString()), new Date(pastDay).toDateString(), new Date(lastUpdate).toDateString());
         return {confirmed, recovered, deaths, lastUpdate};
     } catch (error){
         console.log(error);
