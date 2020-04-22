@@ -13,9 +13,9 @@ const Cards = ({ data: {confirmed, recovered, deaths, lastUpdate}, beforePastDat
     } else {
         const calculateData = ()=>{
             if(beforePastDayConfirmed && ((new Date(beforePastDay).toDateString() !== new Date(lastUpdate).toDateString()))){
-                confirmedDifference = (parseInt(beforePastDayConfirmed) - parseInt(confirmed.value)) >= 0 ? `${(parseInt(beforePastDayConfirmed) - parseInt(confirmed.value))} increased since ${new Date(beforePastDay).toDateString()}` : `${(parseInt(confirmed.value) - parseInt(beforePastDayConfirmed))} decreased since ${new Date(beforePastDay).toDateString()}`;
-                recoveredDifference = (parseInt(beforePastDayRecovered) - parseInt(recovered.value)) >= 0 ? `${(parseInt(beforePastDayRecovered) - parseInt(recovered.value))} increased since ${new Date(beforePastDay).toDateString()}` : `${(parseInt(recovered.value) - parseInt(beforePastDayRecovered))} decreased since ${new Date(beforePastDay).toDateString()}`;
-                deathsDifference = (parseInt(beforePastDayDeaths) - parseInt(deaths.value)) >= 0 ? `${(parseInt(beforePastDayDeaths) - parseInt(deaths.value))} increased since ${new Date(beforePastDay).toDateString()}` : `${(parseInt(deaths.value) - parseInt(beforePastDayDeaths))} decreased since ${new Date(beforePastDay).toDateString()}`;
+                confirmedDifference = (parseInt(beforePastDayConfirmed) - parseInt(confirmed.value)) < 0 ? `${(parseInt(beforePastDayConfirmed) - parseInt(confirmed.value))} increased since ${new Date(beforePastDay).toDateString()}` : `${(parseInt(confirmed.value) - parseInt(beforePastDayConfirmed))} decreased since ${new Date(beforePastDay).toDateString()}`;
+                recoveredDifference = (parseInt(beforePastDayRecovered) - parseInt(recovered.value)) < 0 ? `${(parseInt(beforePastDayRecovered) - parseInt(recovered.value))} increased since ${new Date(beforePastDay).toDateString()}` : `${(parseInt(recovered.value) - parseInt(beforePastDayRecovered))} decreased since ${new Date(beforePastDay).toDateString()}`;
+                deathsDifference = (parseInt(beforePastDayDeaths) - parseInt(deaths.value)) < 0 ? `${(parseInt(beforePastDayDeaths) - parseInt(deaths.value))} increased since ${new Date(beforePastDay).toDateString()}` : `${(parseInt(deaths.value) - parseInt(beforePastDayDeaths))} decreased since ${new Date(beforePastDay).toDateString()}`;
             }
         }
         calculateData();
